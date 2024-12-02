@@ -1,0 +1,296 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --backgroundColor: #090AB2;
+    --colorFont: #ffff;
+    --hoverColor: #FFBE17;
+}
+
+header {
+    width: 100%;
+    height: 15%;
+    background: var(--backgroundColor);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--colorFont);
+    font-family: Verdana;
+}
+
+#albarregasImage {
+    padding: 1rem;
+    width: 20%;
+}
+
+#albarregasImage>img {
+    width: 100%;
+    filter: invert(100%);
+}
+
+#celebrationDays {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+h5 {
+    font-size: 2rem;
+}
+
+#whiteBar {
+    width: 5%;
+    rotate: 90deg;
+    height: 70%;
+    background: var(--colorFont);
+    border: solid 1px var(--colorFont);
+}
+
+#webParts {
+    width: 45%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 1.5rem;
+    gap: 8px;
+}
+
+#webParts span {
+    position: relative;
+    cursor: pointer;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#webParts span:hover {
+    color: var(--hoverColor);
+    transform: scale(1.1);
+}
+
+#webParts span:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--hoverColor);
+    transition: width 0.3s ease;
+}
+
+#webParts span::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background-color: var(--hoverColor);
+    transition: width 0.3s ease;
+}
+
+@keyframes fallDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-120%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideFromLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-150px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#celebrationDays p {
+    display: flex;
+    align-items: center;
+}
+
+#celebrationDays p span {
+    display: inline-block;
+    opacity: 0;
+}
+
+#celebrationDays p span:nth-child(1) {
+    animation: fallDown 0.8s ease-out 0.3s forwards;
+}
+
+#celebrationDays p span:nth-child(2) {
+    animation: fallDown 0.8s ease-out 0.6s forwards;
+}
+
+#celebrationDays p span:nth-child(3) {
+    animation: fallDown 0.8s ease-out 0.9s forwards;
+}
+
+#celebrationDays p span:nth-child(4) {
+    animation: fallDown 0.8s ease-out 1.2s forwards;
+}
+
+#celebrationDays p span:nth-child(5) {
+    animation: fallDown 0.8s ease-out 1.5s forwards;
+}
+
+#webParts span:nth-child(1) {
+    animation: slideFromLeft 0.8s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+#webParts span:nth-child(2) {
+    animation: slideFromLeft 0.8s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+#webParts span:nth-child(3) {
+    animation: slideFromLeft 0.8s ease-out 0.9s forwards;
+    opacity: 0;
+}
+
+
+/* Media Queries para adaptarse a diferentes tamaños de pantalla */
+/* 1440px x 900px (laptop) */
+@media screen and (width >= 1440px) {
+    #albarregasImage {
+        width: 18%; /* Reducción leve para dar más espacio a otros elementos */
+        padding: 1rem; /* Asegura un espaciado adecuado */
+    }
+
+    #celebrationDays {
+        width: 25%;
+        font-size: 1.2rem; /* Ajusta el tamaño de fuente para mejor legibilidad */
+    }
+
+    #webParts {
+        width: 40%;
+        font-size: 1.4rem; /* Se aumenta ligeramente el tamaño de la fuente */
+        padding: 0.8rem; /* Añadido espaciado para mayor separación */
+        gap: 12px; /* Mejora el espacio entre los elementos */
+    }
+
+    #webParts span {
+        font-size: 1.4rem; /* Ajuste de fuente para mejor visibilidad */
+    }
+}
+
+/* 414px x 896px (móvil grande) */
+@media screen and (width < 1440px) and (width > 414px) {
+    header {
+        height: 12%;
+    }
+
+    #celebrationDays {
+        width: 40%;
+        font-size: 0.6rem; 
+    }
+
+    h5 {
+        font-size: 1rem; 
+    }
+
+    #whiteBar {
+        height: 60%;
+    }
+
+    #webParts {
+        width: 50%;
+    }
+
+    #webParts span {
+        font-size: 0.5rem; 
+    }
+
+    #webParts span:hover::after {
+        height: 2px;
+    }
+    
+    #webParts span::after {
+        height: 2px;
+    }
+
+    @keyframes slideFromLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+    
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
+
+/* 360px x 640px (móvil pequeño) */
+@media screen and (width <= 414px) {
+    header {
+        height: 15%;
+    }
+
+    #albarregasImage {
+        width: 30%;
+        padding: 0.5rem;
+    }
+
+    #celebrationDays {
+        width: 50%;
+        font-size: 0.5rem;
+    }
+
+    h5{
+        font-size: 0.8rem;
+    }
+
+    #whiteBar {
+        height: 60%;
+    }
+
+    #webParts {
+        width: 50%;
+    }
+
+    #webParts span {
+        font-size: 0.4rem;
+    }
+
+    #webParts span:hover::after {
+        height: 1px;
+    }
+
+    #webParts span::after {
+        height: 1px;
+    }
+
+    @keyframes slideFromLeft {
+        0% {
+            opacity: 0;
+            transform: translateX(-10px);
+        }
+    
+        100% {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+}
